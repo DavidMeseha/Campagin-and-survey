@@ -139,3 +139,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 @tailwind utilities;
+
+@layer components {
+  .page-title {
+    @apply text-2xl mb-6;
+  }
+}
