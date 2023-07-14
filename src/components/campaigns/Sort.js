@@ -3,14 +3,14 @@ import ClickRecognition from "../../hooks/useClickRecognition";
 import { Ascending } from "../general/Icons";
 
 const Sort = ({ selected, setSelected }) => {
-    const itemStyle = 'p-2 text-center border-b-color5 border-b-2'
+    const itemStyle = 'p-2 text-center border-b-color5 border-b-2 touch-no-pointer'
     const containerRef = useRef()
     const [isOpen, setIsOpen] = useState()
 
     ClickRecognition(() => setIsOpen(false), containerRef)
 
     return (
-        <div onClick={() => setIsOpen(true)} ref={containerRef} className="w-8 p-2 bg-color5 fill-primary relative">
+        <div onClick={() => setIsOpen(true)} ref={containerRef} className="w-8 p-2 bg-color5 fill-primary relative touch-no-pointer">
             <div><Ascending /></div>
             {isOpen && <div className="w-40 bg-secondary top-10 right-0 absolute">
                 <div onClick={() => setSelected('az')} className={`${itemStyle} ${selected === 'az' ? 'text-color4' : 'text-color2'}`}>{'A->Z'}</div>

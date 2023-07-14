@@ -95,7 +95,7 @@ const Campaigns = () => {
                                     <td>{campaign.targetCustomers.length} customers</td>
                                     <td>{campaign.activated}</td>
                                     <td><Switch value={campaign.status} onChange={(e) => changeCampaignStatus(e.target.checked, campaign.id)} /></td>
-                                    <td className="flex justify-center"><div className="fill-color7 w-8" onClick={() => openPerformance(campaign)}><Chart /></div></td>
+                                    <td className="flex justify-center"><div className="fill-color7 w-8 touch-no-pointer" onClick={() => openPerformance(campaign)}><Chart /></div></td>
                                 </tr>
                             )
                         })}

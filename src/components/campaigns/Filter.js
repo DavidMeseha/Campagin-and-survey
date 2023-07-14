@@ -26,16 +26,16 @@ const Filter = ({ setFilters }) => {
     ClickRecognition(() => setIsOpen(false), containerRef)
     return (
         <div onClick={() => setIsOpen(true)} ref={containerRef} className="w-8 p-2 bg-color5 fill-primary relative">
-            <div><FilterIcon /></div>
+            <div className="touch-no-pointer"><FilterIcon /></div>
             {isOpen && <div className="w-52 bg-secondary top-10 right-0 absolute">
                 <div className="p-3 border-b-2 border-b-color5">
                     <div className="text-color4 font-semibold">Status</div>
                     <div className="flex gap-2 w-full">
-                        <label className="flex items-center gap-1 w-1/2" >
+                        <label className="flex items-center gap-1 w-1/2 touch-no-pointer" >
                             <input ref={(e) => radioRef.current.push(e)} type="radio" name="status" onChange={(e) => setSelected({ ...selected, status: !e.target.checked })} />
                             Inactive
                         </label>
-                        <label className="flex items-center">
+                        <label className="flex items-center touch-no-pointer">
                             <input ref={(e) => radioRef.current.push(e)} type="radio" name="status" onChange={(e) => setSelected({ ...selected, status: e.target.checked })} />
                             Active
                         </label>
@@ -44,11 +44,11 @@ const Filter = ({ setFilters }) => {
                 <div className="p-3 border-b-2 border-b-color5">
                     <div className="text-color4 font-semibold">Type</div>
                     <div className="flex gap-2 w-full">
-                        <label className="flex items-center gap-1 w-1/2" >
+                        <label className="flex items-center gap-1 w-1/2 touch-no-pointer" >
                             <input ref={(e) => radioRef.current.push(e)} type="radio" name="type" value='email' onChange={(e) => setSelected({ ...selected, type: e.target.checked ? 'email' : selected.type })} />
                             Email
                         </label>
-                        <label className="flex items-center w-1/2">
+                        <label className="flex items-center w-1/2 touch-no-pointer">
                             <input ref={(e) => radioRef.current.push(e)} type="radio" name="type" value='sms' onChange={(e) => setSelected({ ...selected, type: e.target.checked ? 'sms' : selected.type })} />
                             SMS
                         </label>

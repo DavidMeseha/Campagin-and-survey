@@ -144,4 +144,8 @@ input[type=number]::-webkit-outer-spin-button {
   .page-title {
     @apply text-2xl mb-6;
   }
+
+  .touch-no-pointer {
+    @apply cursor-default md:cursor-pointer;
+  }
 }
