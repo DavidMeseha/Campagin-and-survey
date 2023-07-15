@@ -1,9 +1,9 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Filter as FilterIcon } from "../general/Icons";
 import ClickRecognition from "../../hooks/useClickRecognition";
 import Button from "../general/Button";
 
-const Filter = ({ setFilters }) => {
+const Filter = ({ filters, setFilters }) => {
     const containerRef = useRef()
     const [isOpen, setIsOpen] = useState(false)
     const [selected, setSelected] = useState({ status: 'none', type: 'none' })
@@ -23,6 +23,19 @@ const Filter = ({ setFilters }) => {
         setFilters(empty)
     }
 
+    useEffect(() => {
+        console.log(radioRef.current)
+        radioRef.current.forEach(radio => {
+            if (radio) {
+                console.log(radio.value)
+                if (radio.value === 'active' && filters.status === true) radio.checked = true
+                if (radio.value === 'inactive' && filters.status === false) radio.checked = true
+                if (radio.value === filters.type.toLowerCase()) radio.checked = true
+            }
+        });
+        setSelected(filters)
+    }, [isOpen])
+
     ClickRecognition(() => setIsOpen(false), containerRef)
     return (
         <div onClick={() => setIsOpen(true)} ref={containerRef} className="w-8 p-2 bg-color5 fill-primary relative">
@@ -32,11 +45,11 @@ const Filter = ({ setFilters }) => {
                     <div className="text-color4 font-semibold">Status</div>
                     <div className="flex gap-2 w-full">
                         <label className="flex items-center gap-1 w-1/2 touch-no-pointer" >
-                            <input ref={(e) => radioRef.current.push(e)} type="radio" name="status" onChange={(e) => setSelected({ ...selected, status: !e.target.checked })} />
+                            <input ref={(e) => e && radioRef.current.push(e)} type="radio" name="status" value='inactive' onChange={(e) => setSelected({ ...selected, status: !e.target.checked })} />
                             Inactive
                         </label>
                         <label className="flex items-center touch-no-pointer">
-                            <input ref={(e) => radioRef.current.push(e)} type="radio" name="status" onChange={(e) => setSelected({ ...selected, status: e.target.checked })} />
+                            <input ref={(e) => e && radioRef.current.push(e)} type="radio" name="status" value='active' onChange={(e) => setSelected({ ...selected, status: e.target.checked })} />
                             Active
                         </label>
                     </div>
@@ -45,18 +58,18 @@ const Filter = ({ setFilters }) => {
                     <div className="text-color4 font-semibold">Type</div>
                     <div className="flex gap-2 w-full">
                         <label className="flex items-center gap-1 w-1/2 touch-no-pointer" >
-                            <input ref={(e) => radioRef.current.push(e)} type="radio" name="type" value='email' onChange={(e) => setSelected({ ...selected, type: e.target.checked ? 'email' : selected.type })} />
+                            <input ref={(e) => e && radioRef.current.push(e)} type="radio" name="type" value='email' onChange={(e) => setSelected({ ...selected, type: e.target.checked ? 'email' : selected.type })} />
                             Email
                         </label>
                         <label className="flex items-center w-1/2 touch-no-pointer">
-                            <input ref={(e) => radioRef.current.push(e)} type="radio" name="type" value='sms' onChange={(e) => setSelected({ ...selected, type: e.target.checked ? 'sms' : selected.type })} />
+                            <input ref={(e) => e && radioRef.current.push(e)} type="radio" name="type" value='sms' onChange={(e) => setSelected({ ...selected, type: e.target.checked ? 'sms' : selected.type })} />
                             SMS
                         </label>
                     </div>
                 </div>
                 <div className="flex p-2 gap-2">
                     <Button name={'Reset'} color={'bg-color5'} action={reset} />
-                    <Button name={'Apply'} color={'bg-color7'} action={() => { setFilters(selected); console.log(selected) }} />
+                    <Button name={'Apply'} color={'bg-color7'} action={() => setFilters(selected)} />
                 </div>
             </div>}
         </div>
