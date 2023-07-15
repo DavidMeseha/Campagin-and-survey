@@ -9,9 +9,12 @@ import Filter from "../components/campaigns/Filter";
 import { sortAZ, sortFromNewest, sortFromOldest, sortZA, statusFilter, typeFilter } from "../utilities/sortAndFilterCampaigns";
 import { cloneDeep } from "lodash";
 import CampaignPerformance from "../popups/CampaignPerformance";
+import { useNavigate } from "react-router";
+import Header from "../components/general/Header";
 
 const Campaigns = () => {
     const { campaigns, changeCampaignStatus } = useData()
+    const navigate = useNavigate()
     const [search, setSearch] = useState('')
     const [sort, setSort] = useState('none')
     const [filters, setFilters] = useState({ status: 'none', type: 'none' })
@@ -62,14 +65,14 @@ const Campaigns = () => {
         <>
             {PerformanceIsOpen && <CampaignPerformance close={() => setPerformanceIsOpen(false)} campaign={campaignPerformance} />}
             <nav className="p-4 text-color2">
-                <div className="page-title">Avilable Campaigns</div>
+                <div className="m-3"><Header title={'Avilable Campaigns'} action={() => { }} /></div>
                 <div className="flex justify-between items-center gap-3 md:flex-row flex-col">
                     <div className="flex gap-2 items-center justify-center w-full md:w-auto">
                         <div className="md:w-80 w-[85%]"><SearchInput value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Find Campaign by Name" /></div>
                         <Sort selected={sort} setSelected={setSort} />
                         <Filter filters={filters} setFilters={setFilters} />
                     </div>
-                    <div className="w-48"><Button name={'Creat New Campaign'} action={() => { }} color={'bg-color4'} /></div>
+                    <div className="w-48"><Button name={'Creat New Campaign'} action={() => navigate('/create-campaign')} color={'bg-color4'} /></div>
                 </div>
             </nav>
             <div className="max-w-full overflow-auto">
