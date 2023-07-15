@@ -12,7 +12,7 @@ const CampaignPerformance = ({ campaign, close }) => {
         <div className='fixed inset-0 flex items-center justify-center z-30 bg-[#1e1e1fb0] text-color2'>
             <div ref={containerRef} className='bg-secondary rounded-md max-w-md w-[95%] overflow-auto'>
                 <div className="page-title m-3">
-                    <div className="inline-block -rotate-90 fill-color2 w-6 touch-no-pointer" onClick={close} ><Arrow /></div>
+                    <div className="inline-block -rotate-90 fill-color2 w-6 mr-2 touch-no-pointer" onClick={close} ><Arrow /></div>
                     Campaign Performance
                 </div>
                 <div className={sectionStyle}>

@@ -17,7 +17,8 @@ const Filter = ({ filters, setFilters }) => {
         }
 
         radioRef.current.forEach(radio => {
-            if (radio) radio.checked = false
+            console.log(radio.value)
+            radio.checked = false
         });
 
         setSelected(empty)
@@ -25,17 +26,15 @@ const Filter = ({ filters, setFilters }) => {
     }
 
     useEffect(() => {
-        console.log(radioRef.current)
         radioRef.current.forEach(radio => {
             if (radio) {
-                console.log(radio.value)
                 if (radio.value === 'active' && filters.status === true) radio.checked = true
                 if (radio.value === 'inactive' && filters.status === false) radio.checked = true
                 if (radio.value === filters.type.toLowerCase()) radio.checked = true
             }
         });
         setSelected(filters)
-    }, [isOpen])
+    }, [isOpen, filters])
 
     ClickRecognition(() => setIsOpen(false), containerRef)
     return (
