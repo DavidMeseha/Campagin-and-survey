@@ -20,6 +20,7 @@ const Filter = ({ filters, setFilters }) => {
             if (radio) radio.checked = false
         });
 
+        setSelected(empty)
         setFilters(empty)
     }
 
