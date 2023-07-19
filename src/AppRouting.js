@@ -13,6 +13,7 @@ const AppRouting = () => {
                 <Route path='/' element={<Campaigns />} />
                 <Route path='/create-campaign' element={<CreateCampaign />} />
                 <Route path='/create-campaign/sms' element={<SMSCampgain />} />
+                <Route path='/edit-campaign/sms/:id' element={<SMSCampgain />} />
                 <Route path='/create-campaign/email' element={<EmailCampaign />} />
             </Routes>
         </BrowserRouter>

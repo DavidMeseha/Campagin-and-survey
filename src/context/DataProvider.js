@@ -32,16 +32,36 @@ export const DataProvider = ({ children }) => {
         setCampaigns(newCampaigns)
     }
 
-    const addNewCampaign = (campaign) => {
-        let newCampaigns = cloneDeep(campaigns)
-        newCampaigns.push({ ...campaign, id: ++campaignID })
-        setCampaigns(newCampaigns)
+    const addNewCampaign = (campaign, type) => {
+        let avilableCampaigns = cloneDeep(campaigns)
+        let newCampaign = {
+            id: (++campaignID).toString(),
+            ...campaign,
+            created: new Date(),
+            activated: new Date(),
+            status: true,
+            type: type,
+        }
+        avilableCampaigns.push(newCampaign)
+        setCampaigns(avilableCampaigns)
+    }
+
+    const editCampaign = (id, newData) => {
+        let avilableCampaigns = cloneDeep(campaigns)
+
+        for (let index in campaigns) {
+            console.log(avilableCampaigns[index].id, id)
+            if (avilableCampaigns[index].id === id) {
+                avilableCampaigns[index] = { ...avilableCampaigns[index], ...newData }
+            }
+        }
+        setCampaigns(avilableCampaigns)
     }
 
     return (
         <DataContext.Provider value={{
             campaigns, customers, services,
-            changeCampaignStatus, addNewCampaign
+            changeCampaignStatus, addNewCampaign, editCampaign
         }}>
             {children}
         </DataContext.Provider>

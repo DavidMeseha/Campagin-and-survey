@@ -6,7 +6,7 @@ const Switch = ({ onChange, value }) => {
     useEffect(() => {
         if (!switchRef.current) return
         switchRef.current.checked = value
-    }, [])
+    }, [value])
 
     return (
         <label className="relative inline-flex items-center touch-no-pointer">

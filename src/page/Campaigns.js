@@ -49,6 +49,7 @@ const Campaigns = () => {
     }
 
     useEffect(() => {
+        console.log(campaigns)
         let displayCampaigns = cloneDeep(campaigns)
         if (search) displayCampaigns = findCampaigns(search)
         displayCampaigns = sorting(displayCampaigns)
@@ -92,11 +93,14 @@ const Campaigns = () => {
                         {selectedCampaigns.map(campaign => {
                             return (
                                 <tr key={campaign.id} className="bg-secondary">
-                                    <td className="p-4 flex align-middle justify-center"><div className="fill-color2 w-5 mr-2"><Edit /></div>{campaign.created}</td>
+                                    <td className="p-4 flex align-middle justify-center">
+                                        <div onClick={()=>navigate(`/edit-campaign/${campaign.type.toLowerCase()}/${campaign.id}`)} className="fill-color2 w-5 mr-2"><Edit /></div>
+                                        {new Date(campaign.created).toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                    </td>
                                     <td>{campaign.type}</td>
                                     <td>{campaign.name}</td>
                                     <td>{campaign.targetCustomers.length} customers</td>
-                                    <td>{campaign.activated}</td>
+                                    <td>{new Date(campaign.activated).toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
                                     <td><Switch value={campaign.status} onChange={(e) => changeCampaignStatus(e.target.checked, campaign.id)} /></td>
                                     <td className="flex justify-center"><div className="fill-color7 w-8 touch-no-pointer" onClick={() => openPerformance(campaign)}><Chart /></div></td>
                                 </tr>

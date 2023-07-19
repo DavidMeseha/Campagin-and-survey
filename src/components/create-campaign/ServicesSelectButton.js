@@ -14,7 +14,6 @@ const ServicesSelectButton = ({selected, setSelected}) => {
                     {selected.length < 1
                         ? <div className="text-color5 text-sm">Select Services and Products</div>
                         : selected.map((service) => {
-                            console.log(service)
                             return service.service + ', '
                         })}
                 </div>

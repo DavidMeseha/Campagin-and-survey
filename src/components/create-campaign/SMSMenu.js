@@ -6,8 +6,9 @@ import TextareaWTitle from "../general/TextareaWTitle";
 import ServicesSelectButton from "./ServicesSelectButton";
 import CustomerSelectButton from "./CustomerSelectButton";
 import { convertDateToYMD } from "../../utilities/convertDateToYMD";
+import { isEmpty } from "lodash";
 
-const SMSMenu = ({ setCampaign, campaign, process }) => {
+const SMSMenu = ({ setCampaign, edit, selectedCampaign }) => {
     const [campaignName, setCampaignName] = useState('')
     const [description, setDescription] = useState('')
     const [containPromotion, setContainPromotion] = useState(false)
@@ -17,48 +18,29 @@ const SMSMenu = ({ setCampaign, campaign, process }) => {
     const [selectedServices, setSelectedServices] = useState([])
 
     useEffect(() => {
-        if (process === 'edit') {
-            setCampaignName(campaign.name)
-            setDescription(campaign.description)
-            setSelectedCustomers([...campaign.targetCustomers])
-            if (campaign.promotion) {
-                setSelectedServices([...campaign.promotion.services])
-                setPromotionDuration({ ...campaign.promotion.duration })
-                setPromotionValue({ value: campaign.promotion.value, type: campaign.promotion.type })
+        if (edit && !isEmpty(selectedCampaign)) {
+            setCampaignName(selectedCampaign.name)
+            setDescription(selectedCampaign.description)
+            setSelectedCustomers([...selectedCampaign.targetCustomers])
+            if (selectedCampaign.promotion) {
+                setContainPromotion(true)
+                setSelectedServices([...selectedCampaign.promotion.services])
+                setPromotionDuration({ ...selectedCampaign.promotion.duration })
+                setPromotionValue({ value: selectedCampaign.promotion.value, type: selectedCampaign.promotion.type })
             }
         }
-
-        if (process === 'create') {
-            console.log('create')
-            setCampaign({
-                created: new Date(),
-                activated: new Date(),
-                name: campaignName,
-                type: 'SMS',
-                targetCustomers: [...selectedCustomers],
-                promotion: containPromotion ? {
-                    value: promotionValue.value,
-                    type: promotionValue.type,
-                    services: [...selectedServices]
-                } : null,
-                performance: {
-                    engagment: 0,
-                    sales: 0
-                }
-            })
-        }
-    }, [])
+    }, [selectedCampaign])
 
     useEffect(() => {
-        console.log(campaign)
         setCampaign({
-            ...campaign,
+            ...selectedCampaign,
             name: campaignName,
             description: description,
             targetCustomers: [...selectedCustomers],
             promotion: containPromotion ? {
                 value: promotionValue.value,
                 type: promotionValue.type,
+                duration: { start: new Date(promotionDuration.start), end: new Date(promotionDuration.end) },
                 services: [...selectedServices]
             } : null,
             performance: {
@@ -110,14 +92,14 @@ const SMSMenu = ({ setCampaign, campaign, process }) => {
                         <TextInput
                             type={'date'} title={'From'}
                             value={convertDateToYMD(promotionDuration.start)}
-                            onChange={(e) => setPromotionDuration({ ...promotionDuration, start: e.target.value })}
+                            onChange={(e) => setPromotionDuration({ ...promotionDuration, start: new Date(e.target.value) })}
                         />
                     </div>
                     <div className="w-1/2">
                         <TextInput
                             type={'date'} title={'To'}
-                            value={convertDateToYMD(promotionDuration.start)}
-                            onChange={(e) => setPromotionDuration({ ...promotionDuration, end: e.target.value })}
+                            value={convertDateToYMD(promotionDuration.end)}
+                            onChange={(e) => setPromotionDuration({ ...promotionDuration, end: new Date(e.target.value) })}
                         />
                     </div>
                 </div>
