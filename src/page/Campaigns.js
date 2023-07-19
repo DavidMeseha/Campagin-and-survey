@@ -94,7 +94,7 @@ const Campaigns = () => {
                             return (
                                 <tr key={campaign.id} className="bg-secondary">
                                     <td className="p-4 flex align-middle justify-center">
-                                        <div onClick={()=>navigate(`/edit-campaign/${campaign.type.toLowerCase()}/${campaign.id}`)} className="fill-color2 w-5 mr-2"><Edit /></div>
+                                        <div onClick={()=>navigate(`/edit-campaign/${campaign.type.toLowerCase()}/${campaign.id}`)} className="fill-color2 w-5 mr-2 touch-no-pointer"><Edit /></div>
                                         {new Date(campaign.created).toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' })}
                                     </td>
                                     <td>{campaign.type}</td>
