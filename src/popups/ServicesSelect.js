@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import useData from '../hooks/useData'
-import SearchInput from '../components/campaigns/SearchInput';
 import CategorySet from '../components/service-select/CategorySet'
+import ClickRecognition from '../hooks/useClickRecognition';
+import SearchInput from '../components/general/SearchInput';
+import useData from '../hooks/useData';
 
 const ServicesSelect = ({ selected, setSelected, close }) => {
     const containerRef = useRef()

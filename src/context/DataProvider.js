@@ -3,6 +3,7 @@ import { cloneDeep } from "lodash";
 import { campaignsData, customersData, servicesData } from "../constants/initialData";
 
 const DataContext = createContext({})
+let campaignID = 4
 
 export const DataProvider = ({ children }) => {
     const [customers, setCustomers] = useState([])
@@ -31,8 +32,17 @@ export const DataProvider = ({ children }) => {
         setCampaigns(newCampaigns)
     }
 
+    const addNewCampaign = (campaign) => {
+        let newCampaigns = cloneDeep(campaigns)
+        newCampaigns.push({ ...campaign, id: ++campaignID })
+        setCampaigns(newCampaigns)
+    }
+
     return (
-        <DataContext.Provider value={{ campaigns, customers, services, changeCampaignStatus }}>
+        <DataContext.Provider value={{
+            campaigns, customers, services,
+            changeCampaignStatus, addNewCampaign
+        }}>
             {children}
         </DataContext.Provider>
     )
