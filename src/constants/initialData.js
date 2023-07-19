@@ -1,23 +1,33 @@
 export let customersData = [
     {
+        id: '0',
         name: 'Marcos brother',
         phone: '01234566789'
     },
     {
+        id: '1',
         name: 'Mady Man',
         phone: '01234566789'
     },
     {
+        id: '2',
         name: 'Paul father',
         phone: '987456321'
     },
     {
+        id: '3',
         name: 'Paul Someone',
         phone: '987456321'
     },
     {
+        id: '4',
         name: 'Someone else',
         phone: '01234566789'
+    },
+    {
+        id: '5',
+        name: 'David Magdy',
+        phone: '01244569086'
     }
 ]
 
@@ -76,29 +86,30 @@ export let campaignsData = [
         created: 'July 10 2023',
         activated: 'July 10 2023',
         name: 'Birthday Newsletter',
+        description: 'This Is Some Campaign SMS with Some Greetings and Promotions',
         type: 'email',
         status: false,
         targetCustomers: [
             {
+                id: '0',
                 name: 'Marcos brother',
                 phone: '01234566789'
             },
             {
+                id: '1',
                 name: 'Mady Man',
                 phone: '01234566789'
             },
             {
+                id: '2',
                 name: 'Paul father',
                 phone: '987456321'
             },
             {
+                id: '3',
                 name: 'Paul Someone',
                 phone: '987456321'
             },
-            {
-                name: 'Someone else',
-                phone: '01234566789'
-            }
         ],
         performance: {
             engagement: 3,
@@ -107,6 +118,7 @@ export let campaignsData = [
         promotion: {
             value: 20,
             type: '%',
+            duration: { start: '', end: '' },
             services: [
                 {
                     service: 'Beard Cut',
@@ -131,29 +143,25 @@ export let campaignsData = [
         created: 'May 18 2023',
         activated: 'May 18 2023',
         name: 'New Campaingn',
+        description: 'This Is Some Campaign SMS with Some Greetings and Promotions',
         type: 'email',
         status: true,
         targetCustomers: [
             {
+                id: '0',
                 name: 'Marcos brother',
                 phone: '01234566789'
             },
             {
+                id: '1',
                 name: 'Mady Man',
                 phone: '01234566789'
             },
             {
+                id: '2',
                 name: 'Paul father',
                 phone: '987456321'
             },
-            {
-                name: 'Paul Someone',
-                phone: '987456321'
-            },
-            {
-                name: 'Someone else',
-                phone: '01234566789'
-            }
         ],
         performance: {
             engagement: 1,
@@ -162,6 +170,7 @@ export let campaignsData = [
         promotion: {
             value: 20,
             type: '%',
+            duration: { start: '', end: '' },
             services: [
                 {
                     service: 'Beard Cut',
@@ -186,29 +195,30 @@ export let campaignsData = [
         created: 'June 25 2023',
         activated: 'June 25 2023',
         name: 'Some Message',
+        description: 'This Is Some Campaign SMS with Some Greetings and Promotions',
         type: 'SMS',
         status: false,
         targetCustomers: [
             {
+                id: '0',
                 name: 'Marcos brother',
                 phone: '01234566789'
             },
             {
+                id: '1',
                 name: 'Mady Man',
                 phone: '01234566789'
             },
             {
+                id: '2',
                 name: 'Paul father',
                 phone: '987456321'
             },
             {
+                id: '3',
                 name: 'Paul Someone',
                 phone: '987456321'
             },
-            {
-                name: 'Someone else',
-                phone: '01234566789'
-            }
         ],
         performance: {
             engagement: 4,
@@ -217,6 +227,7 @@ export let campaignsData = [
         promotion: {
             value: 20,
             type: '%',
+            duration: { start: '', end: '' },
             services: [
                 {
                     service: 'Beard Cut',
@@ -237,57 +248,39 @@ export let campaignsData = [
         }
     },
     {
+        id:'4',
         created: 'June 10 2023',
         activated: 'June 10 2023',
         name: 'Discounted Services',
+        description: 'This Is Some Campaign SMS with Some Greetings and Promotions',
         type: 'email',
         status: true,
         targetCustomers: [
             {
+                id: '0',
                 name: 'Marcos brother',
                 phone: '01234566789'
             },
             {
+                id: '1',
                 name: 'Mady Man',
                 phone: '01234566789'
             },
             {
+                id: '2',
                 name: 'Paul father',
                 phone: '987456321'
             },
             {
+                id: '3',
                 name: 'Paul Someone',
                 phone: '987456321'
             },
-            {
-                name: 'Someone else',
-                phone: '01234566789'
-            }
         ],
         performance: {
             engagement: 5,
             sales: 2_000_000
         },
-        promotion: {
-            value: 20,
-            type: '%',
-            services: [
-                {
-                    service: 'Beard Cut',
-                    price: 10_000_000,
-                    duration: 50
-                },
-                {
-                    service: 'Some Service',
-                    price: 900_000_000,
-                    duration: 120
-                },
-                {
-                    service: 'Cut Cut',
-                    price: 10_000_000,
-                    duration: 30
-                },
-            ]
-        }
+        promotion: null
     },
 ]
