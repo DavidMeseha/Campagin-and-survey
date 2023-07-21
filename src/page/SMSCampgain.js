@@ -16,7 +16,6 @@ const SMSCampgain = () => {
     const [campaign, setCampaign] = useState({})
     const [selectedCampaign, setSelectedCampaign] = useState({})
     const isEdit = location.pathname !== `/create-campaign/sms/${template}`
-    console.log(isEdit)
     const [isView, setIsView] = useState(isEdit)
 
     useEffect(() => {

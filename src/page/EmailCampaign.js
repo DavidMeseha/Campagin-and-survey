@@ -16,7 +16,6 @@ const EmailCampaign = () => {
     const [campaign, setCampaign] = useState({})
     const [selectedCampaign, setSelectedCampaign] = useState({})
     const isEdit = location.pathname !== `/create-campaign/sms/${template}`
-    console.log(isEdit)
     const [isView, setIsView] = useState(isEdit)
 
     useEffect(() => {
@@ -59,7 +58,7 @@ const EmailCampaign = () => {
                     <div className="flex flex-col sm:grow w-1/2 p-3 bg-secondary rounded-md overflow-auto">
                         <div className="grow">
                             <div className="w-full p-3"><span className="text-green">Supject: </span>{campaign.supject}</div>
-                            <div className="relative flex justify-center items-center h-28 w-[90%] m-auto my-3 bg-primary">
+                            <div className="relative flex justify-center items-center h-28 w-[90%] m-auto my-3">
                                 {campaign.image
                                     ? <img src={campaign.image ? URL.createObjectURL(campaign.image) : ''} className="max-h-full" alt="someone's Img" />
                                     : <div>Add Header Image</div>}
