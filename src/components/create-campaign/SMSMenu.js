@@ -7,8 +7,15 @@ import ServicesSelectButton from "./ServicesSelectButton";
 import CustomerSelectButton from "./CustomerSelectButton";
 import { convertDateToYMD } from "../../utilities/convertDateToYMD";
 import { isEmpty } from "lodash";
+import Button from "../general/Button";
+import { useNavigate } from "react-router";
+import DonePopup from "../general/DonePopup";
+import Message from "../general/Message";
+import useData from "../../hooks/useData";
 
-const SMSMenu = ({ setCampaign, edit, selectedCampaign }) => {
+const SMSMenu = ({ setCampaign, campaign, isEdit, selectedCampaign }) => {
+    const navigate = useNavigate()
+    const { editCampaign, addNewCampaign } = useData()
     const [campaignName, setCampaignName] = useState('')
     const [description, setDescription] = useState('')
     const [containPromotion, setContainPromotion] = useState(false)
@@ -17,8 +24,12 @@ const SMSMenu = ({ setCampaign, edit, selectedCampaign }) => {
     const [selectedCustomers, setSelectedCustomers] = useState([])
     const [selectedServices, setSelectedServices] = useState([])
 
+    const [errorMessage, setErrorMesssage] = useState('')
+    const [isError, setIsError] = useState(false)
+    const [isDone, setIsDone] = useState(false)
+
     useEffect(() => {
-        if (edit && !isEmpty(selectedCampaign)) {
+        if (isEdit && !isEmpty(selectedCampaign)) {
             setCampaignName(selectedCampaign.name)
             setDescription(selectedCampaign.description)
             setSelectedCustomers([...selectedCampaign.targetCustomers])
@@ -50,8 +61,35 @@ const SMSMenu = ({ setCampaign, edit, selectedCampaign }) => {
         })
     }, [campaignName, containPromotion, promotionValue, promotionDuration, selectedCustomers, selectedServices, description])
 
+    const threwError = (message) => {
+        setErrorMesssage(message)
+        setIsError(true)
+    }
+
+    const save = () => {
+        if (!campaign.name) return threwError('Campaign Name Field Is Empty')
+        if (!campaign.description) return threwError('Campaign Description Field Is Empty')
+        if (campaign.targetCustomers.length < 1) return threwError('No Customers Targeted')
+        if (campaign.promotion) {
+            if (!campaign.promotion.value) return threwError('It contains promotion but has no value')
+            if (campaign.promotion.services.length < 1) return threwError('It contains promotion but has no selected services')
+            if (campaign.promotion.duration.start > campaign.promotion.duration.end) return threwError('Promotion duration end should be after the start value')
+        }
+
+        if (!isEdit) addNewCampaign(campaign, 'SMS')
+        else editCampaign(campaign.id, campaign)
+
+        setIsDone(true)
+        setTimeout(() => {
+            setIsDone(false)
+            navigate('/')
+        }, 1200)
+    }
+
     return (
         <>
+            {isDone && <DonePopup action={'New Campaign Created'} />}
+            <Message message={errorMessage} state={isError} setState={setIsError} />
             <div>
                 <TextInput
                     title={'Campaign Name'}
@@ -104,6 +142,7 @@ const SMSMenu = ({ setCampaign, edit, selectedCampaign }) => {
                     </div>
                 </div>
             </div>
+            <div className="my-2"><Button action={save} name={'Save'} color={'bg-color4'} /></div>
         </>
     )
 };

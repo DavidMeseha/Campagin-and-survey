@@ -2,10 +2,8 @@ import { useLocation, useNavigate, useParams } from "react-router";
 import Header from "../components/general/Header";
 import SMSMenu from "../components/create-campaign/SMSMenu";
 import { useEffect, useState } from "react";
-import { Edit, User } from "../components/general/Icons";
+import { User } from "../components/general/Icons";
 import Button from "../components/general/Button";
-import Message from '../components/general/Message'
-import DonePopup from "../components/general/DonePopup";
 import useData from "../hooks/useData";
 import { cloneDeep } from "lodash";
 
@@ -13,14 +11,11 @@ const SMSCampgain = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const { id } = useParams()
-    const { campaigns, editCampaign, addNewCampaign } = useData()
+    const { campaigns } = useData()
     const [campaign, setCampaign] = useState({})
     const [selectedCampaign, setSelectedCampaign] = useState({})
-    const [errorMessage, setErrorMesssage] = useState('')
-    const [isError, setIsError] = useState(false)
-    const [isDone, setIsDone] = useState(false)
-    const [isView, setIsView] = useState(false)
     const isEdit = location.pathname !== '/create-campaign/sms'
+    const [isView, setIsView] = useState(isEdit)
 
     useEffect(() => {
         if (isEdit && id) {
@@ -37,35 +32,8 @@ const SMSCampgain = () => {
         }
     }, [campaigns])
 
-    const threwError = (message) => {
-        setErrorMesssage(message)
-        setIsError(true)
-    }
-
-    const save = () => {
-        if (!campaign.name) return threwError('Campaign Name Field Is Empty')
-        if (!campaign.description) return threwError('Campaign Description Field Is Empty')
-        if (campaign.targetCustomers.length < 1) return threwError('No Customers Targeted')
-        if (campaign.promotion) {
-            if (!campaign.promotion.value) return threwError('It contains promotion but has no value')
-            if (campaign.promotion.services.length < 1) return threwError('It contains promotion but has no selected services')
-            if (campaign.promotion.duration.start > campaign.promotion.duration.end) return threwError('Promotion duration end should be after the start value')
-        }
-
-        if (!isEdit) addNewCampaign(campaign, 'SMS')
-        else editCampaign(campaign.id, campaign)
-
-        setIsDone(true)
-        setTimeout(() => {
-            setIsDone(false)
-            navigate('/')
-        }, 1200)
-    }
-
     return (
         <div className="relative">
-            {isDone && <DonePopup action={'New Campaign Created'} />}
-            <Message message={errorMessage} state={isError} setState={setIsError} />
             <div className="relative h-[100vh] mx-4 text-color2 overflow-hidden">
                 <div className="flex justify-between items-center p-3">
                     <Header title={'SMS Campaign'} action={() => navigate('/')} />
@@ -73,7 +41,7 @@ const SMSCampgain = () => {
                 </div>
                 <main className={`absolute flex gap-3 sm:w-full w-[200%] top-14 bottom-4 ${isView ? 'left-[-100%]' : 'left-0'} sm:left-0`}>
                     <div className="sm:w-[300px] w-1/2 p-3 bg-secondary rounded-md overflow-auto">
-                        <SMSMenu save={save} campaign={campaign} selectedCampaign={selectedCampaign} setCampaign={setCampaign} edit={isEdit} />
+                        <SMSMenu campaign={campaign} selectedCampaign={selectedCampaign} setCampaign={setCampaign} isEdit={isEdit} />
                     </div>
                     <div className="flex flex-col sm:grow w-1/2 bg-secondary rounded-md">
                         <div className="w-full p-2 border-b-2 border-b-color2 text-center">TOAT</div>
@@ -81,12 +49,13 @@ const SMSCampgain = () => {
                             <div className="w-12 p-2 bg-green rounded-full"><User /></div>
                             <div className="grow">
                                 <div className="w-full text-center text-color8 text-sm p-2">{new Date().toLocaleDateString('en', { weekday: 'long' }) + ', ' + new Date().toLocaleTimeString('en', { hour12: true, hour: '2-digit', minute: '2-digit' })}</div>
-                                <div className="w-full min-h-[250px] flex items-center bg-primary rounded-md">
-                                    <div className="grow text-center font-bold text-base"><p className="w-[35vw] m-auto overflow-hidden">{campaign.description}</p></div>
+                                <div className="p-4 w-fit min-h-[50px] bg-primary rounded-[30px]">
+                                    <div className="text-base">
+                                        <p className="overflow-hidden">{campaign.description ? campaign.description : 'Edit Description For Message Content'}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div><Button action={save} name={'Save'} color={'bg-color4'} /></div>
                     </div>
                 </main>
             </div>

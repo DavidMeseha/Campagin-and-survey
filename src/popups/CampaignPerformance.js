@@ -18,7 +18,7 @@ const CampaignPerformance = ({ campaign, close }) => {
                 </div>
                 <div className={sectionStyle}>
                     <div className={titleStyle}>Percentage Engaged</div>
-                    <div>{(campaign.performance.engagement / campaign.targetCustomers.length) * 100}% of the customers engaged</div>
+                    <div>{((campaign.performance.engagement / campaign.targetCustomers.length) * 100).toFixed(2)}% of the customers engaged</div>
                 </div>
                 <div className={sectionStyle}>
                     <div className={titleStyle}>Sales</div>
