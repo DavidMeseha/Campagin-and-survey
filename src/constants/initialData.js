@@ -87,7 +87,7 @@ export let campaignsData = [
         activated: 'July 10 2023',
         name: 'Birthday Newsletter',
         description: 'This Is Some Campaign SMS with Some Greetings and Promotions',
-        type: 'email',
+        type: 'SMS',
         status: false,
         targetCustomers: [
             {
@@ -143,7 +143,12 @@ export let campaignsData = [
         created: 'May 18 2023',
         activated: 'May 18 2023',
         name: 'New Campaingn',
-        description: 'This Is Some Campaign SMS with Some Greetings and Promotions',
+        title: 'Big Event',
+        salutatin: 'Hi First Name',
+        supject: 'New Things are Coming',
+        image: null,
+        description: 'This Is Some Campaign Email with Some Greetings and Promotions',
+        canBook: true,
         type: 'email',
         status: true,
         targetCustomers: [
@@ -248,11 +253,16 @@ export let campaignsData = [
         }
     },
     {
-        id:'4',
+        id: '4',
         created: 'June 10 2023',
         activated: 'June 10 2023',
         name: 'Discounted Services',
-        description: 'This Is Some Campaign SMS with Some Greetings and Promotions',
+        title: 'Some Discounts',
+        salutatin: 'Hi First Name',
+        supject: 'Big Sale ',
+        image: null,
+        description: 'This Is Some Campaign Email with Some Greetings and Promotions',
+        canBook: false,
         type: 'email',
         status: true,
         targetCustomers: [
@@ -284,3 +294,8 @@ export let campaignsData = [
         promotion: null
     },
 ]
+
+export const companyData = {
+    name:'Company Name',
+    address: 'Company Address'
+}

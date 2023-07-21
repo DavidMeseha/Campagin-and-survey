@@ -23,6 +23,7 @@ const Filter = ({ filters, setFilters }) => {
 
         setSelected(empty)
         setFilters(empty)
+        setIsOpen(false)
     }
 
     useEffect(() => {
@@ -38,8 +39,8 @@ const Filter = ({ filters, setFilters }) => {
 
     ClickRecognition(() => setIsOpen(false), containerRef)
     return (
-        <div onClick={() => setIsOpen(true)} ref={containerRef} className="w-8 p-2 bg-color5 fill-primary relative">
-            <div className="touch-no-pointer"><FilterIcon /></div>
+        <div ref={containerRef} className="relative">
+            <div onClick={() => setIsOpen(true)} className="w-8 p-2 bg-color5 fill-primary touch-no-pointer"><FilterIcon /></div>
             {isOpen && <div className="w-52 bg-secondary top-10 right-0 absolute">
                 <div className="p-3 border-b-2 border-b-color5">
                     <div className="text-color4 font-semibold">Status</div>
@@ -69,7 +70,7 @@ const Filter = ({ filters, setFilters }) => {
                 </div>
                 <div className="flex p-2 gap-2">
                     <Button name={'Reset'} color={'bg-color5'} action={reset} />
-                    <Button name={'Apply'} color={'bg-color7'} action={() => setFilters(selected)} />
+                    <Button name={'Apply'} color={'bg-color7'} action={() => { setFilters(selected); setIsOpen(false) }} />
                 </div>
             </div>}
         </div>

@@ -29,10 +29,10 @@ const SMSMenu = ({ setCampaign, campaign, isEdit, selectedCampaign }) => {
     const [isDone, setIsDone] = useState(false)
 
     useEffect(() => {
-        if (isEdit && !isEmpty(selectedCampaign)) {
+        if (!isEmpty(selectedCampaign)) {
             setCampaignName(selectedCampaign.name)
             setDescription(selectedCampaign.description)
-            setSelectedCustomers([...selectedCampaign.targetCustomers])
+            setSelectedCustomers(selectedCampaign.targetCustomers || [])
             if (selectedCampaign.promotion) {
                 setContainPromotion(true)
                 setSelectedServices([...selectedCampaign.promotion.services])
