@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import CreateCampaign from "./page/CreateCampaign";
 import SMSCampgain from "./page/SMSCampgain";
 import EmailCampaign from "./page/EmailCampaign";
+import CreateSurvey from "./page/CreateSurvey";
 
 
 const AppRouting = () => {
@@ -18,6 +19,7 @@ const AppRouting = () => {
                 <Route path='/create-campaign/email' element={<EmailCampaign />} />
                 <Route path='/create-campaign/email/:template' element={<EmailCampaign />} />
                 <Route path='/edit-campaign/email/:id' element={<EmailCampaign />} />
+                <Route path='/create-survey' element={<CreateSurvey />} />
             </Routes>
         </BrowserRouter>
     )
