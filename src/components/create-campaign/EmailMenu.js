@@ -180,7 +180,7 @@ const SMSMenu = ({ campaign, setCampaign, isEdit, selectedCampaign }) => {
                 </div>
                 <div><ServicesSelectButton selected={selectedServices} setSelected={setSelectedServices} /></div>
                 <div className="mb-2">Promotion Duration</div>
-                <div className="flex gap-1 w-full">
+                <div className="flex gap-1 w-full h-20">
                     <div className="w-1/2">
                         <TextInput
                             type={'date'} title={'From'}

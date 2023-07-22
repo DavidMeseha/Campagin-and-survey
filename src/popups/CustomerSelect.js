@@ -83,7 +83,7 @@ const CustomerSelect = ({ close, selected, setSelected }) => {
         setSearchedCustomers(found)
     }
 
-    ClickRecognition(close, containerRef)
+    ClickRecognition(() => setTimeout(() => close(), 150), containerRef)
     return (
         <div className='fixed inset-0 flex items-center justify-center z-30 bg-[#1e1e1fb0] text-color2'>
             <div ref={containerRef} className='p-3 bg-secondary rounded-md max-w-md w-[95%] h-[400px] max-h-[95vh] overflow-auto'>

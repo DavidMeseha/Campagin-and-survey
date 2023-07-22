@@ -80,6 +80,7 @@ const Campaigns = () => {
                 <table className="text-center text-color2 border-separate border-spacing-y-2 w-full">
                     <thead className="text-color4">
                         <tr>
+                            <td className="min-w-[60px]"></td>
                             <td className="min-w-[170px]">Created Date</td>
                             <td className="min-w-[150px]">Type</td>
                             <td className="min-w-[150px]">Name</td>
@@ -93,10 +94,8 @@ const Campaigns = () => {
                         {selectedCampaigns.map(campaign => {
                             return (
                                 <tr key={campaign.id} className="bg-secondary">
-                                    <td className="p-4 flex align-middle justify-center">
-                                        <div onClick={()=>navigate(`/edit-campaign/${campaign.type.toLowerCase()}/${campaign.id}`)} className="fill-color2 w-5 mr-2 touch-no-pointer"><Edit /></div>
-                                        {new Date(campaign.created).toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' })}
-                                    </td>
+                                    <td className="p-4"><div onClick={() => navigate(`/edit-campaign/${campaign.type.toLowerCase()}/${campaign.id}`)} className="fill-color2 w-5 touch-no-pointer"><Edit /></div></td>
+                                    <td>{new Date(campaign.created).toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
                                     <td>{campaign.type}</td>
                                     <td>{campaign.name}</td>
                                     <td>{campaign.targetCustomers.length} customers</td>

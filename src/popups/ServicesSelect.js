@@ -38,7 +38,7 @@ const ServicesSelect = ({ selected, setSelected, close }) => {
         setSearchResult(result)
     }
 
-    ClickRecognition(close, containerRef)
+    ClickRecognition(() => setTimeout(() => close(), 150), containerRef)
 
     return (
         <div className='fixed inset-0 flex items-center justify-center z-30 bg-[#1e1e1fb0]'>

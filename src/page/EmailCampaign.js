@@ -15,8 +15,8 @@ const EmailCampaign = () => {
     const { campaigns } = useData()
     const [campaign, setCampaign] = useState({})
     const [selectedCampaign, setSelectedCampaign] = useState({})
-    const isEdit = location.pathname !== `/create-campaign/sms/${template}`
-    const [isView, setIsView] = useState(isEdit)
+    const isEdit = location.pathname !== `/create-campaign/email/${template}`
+    const [isView, setIsView] = useState(true)
 
     useEffect(() => {
         if (isEdit && id) {
@@ -42,7 +42,7 @@ const EmailCampaign = () => {
         <div className="relative">
             <div className="relative h-[100vh] mx-4 text-color2 overflow-hidden">
                 <div className="flex justify-between items-center p-3">
-                    <Header title={'Email Campaign'} action={() => navigate('/')} />
+                    <Header title={'Email Campaign'} action={() => navigate('/create-campaign')} />
                     <div className="w-16 sm:hidden">
                         <Button
                             name={isView ? 'Edit' : 'View'}
