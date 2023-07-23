@@ -19,7 +19,8 @@ const AppRouting = () => {
                 <Route path='/create-campaign/email' element={<EmailCampaign />} />
                 <Route path='/create-campaign/email/:template' element={<EmailCampaign />} />
                 <Route path='/edit-campaign/email/:id' element={<EmailCampaign />} />
-                <Route path='/create-survey' element={<CreateSurvey />} />
+                <Route path='/create-campaign/survey' element={<CreateSurvey />} />
+                <Route path='/edit-campaign/survey/:id' element={<CreateSurvey />} />
             </Routes>
         </BrowserRouter>
     )

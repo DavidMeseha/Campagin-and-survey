@@ -31,7 +31,7 @@ const Card = ({ campaign, type }) => {
                         <Button name={'Email'} color={'bg-color4'} action={() => navigate(`/create-campaign/email/${type}`)} />
                         <Button name={'SMS'} color={'bg-green'} action={() => navigate(`/create-campaign/sms/${type}`)} />
                     </>
-                    : <Button name={'Create Survey'} color={'bg-color4'} action={()=>navigate(`/create-survey`)} />
+                    : <Button name={'Create Survey'} color={'bg-color4'} action={()=>navigate(`/create-campaign/survey`)} />
                 }
             </div>
         </div>
