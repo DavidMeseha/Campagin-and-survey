@@ -6,7 +6,7 @@ import { MultipleOptionsQuestions, TextQuestion } from "./Questions";
 const MULTI_OPTIONS_Questions = ['Multiple Textbox', 'Multiple Choice', 'Checkbox', 'Ranking']
 const SINGLE_QUESTION = ['Single Textbox', 'Rating']
 
-const QuestionSelectButton = ({ question, setQuestionType, setQuestionText, setOption, addOption }) => {
+const QuestionSelectButton = ({ question, setQuestionType, setQuestionText, setOption, addOption, removeOption, removeQuestion }) => {
     const [isOpen, setIsOpen] = useState(false)
 
     if (!question.type) {
@@ -26,13 +26,20 @@ const QuestionSelectButton = ({ question, setQuestionType, setQuestionText, setO
 
     if (SINGLE_QUESTION.includes(question.type)) {
         return (
-            <TextQuestion question={question} setQuestionText={setQuestionText} />
+            <TextQuestion question={question} setQuestionText={setQuestionText} removeQuestion={removeQuestion} />
         )
     }
 
     if (MULTI_OPTIONS_Questions.includes(question.type)) {
         return (
-            <MultipleOptionsQuestions question={question} setQuestionText={setQuestionText} setOption={setOption} addOption={addOption} />
+            <MultipleOptionsQuestions
+                question={question}
+                setQuestionText={setQuestionText}
+                setOption={setOption}
+                addOption={addOption}
+                removeOption={removeOption}
+                removeQuestion={removeQuestion}
+            />
         )
     }
 };

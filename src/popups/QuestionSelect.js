@@ -16,7 +16,7 @@ const QuestionSelect = ({ setQuestionType, close }) => {
                 <div className="m-3"><Header action={() => close()} title={'Select Question Type'} /></div>
                 {OPTIONS.map(option => {
                     return (
-                        <div onClick={() => setQuestionType(option)} className={sectionStyle}>
+                        <div onClick={() => setQuestionType(option)} className={sectionStyle + 'touch-no-pointer'}>
                             {option}
                         </div>
                     )

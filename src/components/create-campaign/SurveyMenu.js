@@ -21,7 +21,6 @@ const SurveyMenu = ({ survey, setSurvey, isEdit, selectedSurvey }) => {
     const [isDone, setIsDone] = useState(false)
 
     useEffect(() => {
-        console.log(selectedSurvey)
         if (!isEmpty(selectedSurvey)) {
             setSurveyTitle(selectedSurvey.title)
             setSelectedCustomers(selectedSurvey.selectedCustomers || [])
@@ -94,6 +93,19 @@ const SurveyMenu = ({ survey, setSurvey, isEdit, selectedSurvey }) => {
         setQuestions(modifiedQuestions)
     }
 
+    const removeOption = (optionIndex, questionIndex) => {
+        let modifiedQuestions = cloneDeep(questions)
+        modifiedQuestions[questionIndex].options.splice(optionIndex, 1)
+        setQuestions(modifiedQuestions)
+    }
+
+    const removeQuestion = (index) => {
+        console.log(index)
+        let allQuestions = cloneDeep(questions)
+        allQuestions.splice(index, 1)
+        setQuestions(allQuestions)
+    }
+
     return (
         <>
             {isDone && <DonePopup action={'New Survey Created'} />}
@@ -109,18 +121,21 @@ const SurveyMenu = ({ survey, setSurvey, isEdit, selectedSurvey }) => {
             <div><CustomerSelectButton selected={selectedCustomers} setSelected={setSelectedCustomers} /></div>
             {questions.map((question, index) => {
                 return (
-                    <div><QuestionSelectButton
-                        question={question}
-                        setQuestionType={(type) => setQuestionType(index, type)}
-                        setQuestionText={(text) => setQuestionText(index, text)}
-                        setOption={(optionIndex, text) => setOption(optionIndex, index, text)}
-                        addOption={() => addOption(index)}
-                    />
+                    <div key={index}>
+                        <QuestionSelectButton
+                            question={question}
+                            setQuestionType={(type) => setQuestionType(index, type)}
+                            setQuestionText={(text) => setQuestionText(index, text)}
+                            setOption={(optionIndex, text) => setOption(optionIndex, index, text)}
+                            addOption={() => addOption(index)}
+                            removeOption={(optionIndex) => removeOption(optionIndex, index)}
+                            removeQuestion={() => removeQuestion(index)}
+                        />
                     </div>
 
                 )
             })}
-            <div onClick={addQuestion} className="text-color7 mb-4"><span className="text-2xl mr-2">+</span>Add Question</div>
+            <div onClick={addQuestion} className="text-color7 mb-4 touch-no-pointer"><span className="text-2xl mr-2">+</span>Add Question</div>
             <div className="my-2"><Button action={save} name={'Save'} color={'bg-color4'} /></div>
         </>
     )
