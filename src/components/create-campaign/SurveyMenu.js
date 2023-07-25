@@ -31,7 +31,7 @@ const SurveyMenu = ({ survey, setSurvey, isEdit, selectedSurvey }) => {
     useEffect(() => {
         setSurvey({
             ...selectedSurvey,
-            title: surveyTitle,
+            name: surveyTitle,
             targetCustomers: [...selectedCustomers],
             questions
         })
@@ -43,10 +43,11 @@ const SurveyMenu = ({ survey, setSurvey, isEdit, selectedSurvey }) => {
     }
 
     const save = () => {
-        if (!survey.title) return threwError('The Survey title input is empty')
+        if (!survey.name) return threwError('The Survey title input is empty')
         if (survey.targetCustomers.length < 1) return threwError('No Customers Selected')
-        if (survey.questions.length < 1) return threwError('No Customers Selected')
-        if (!isEdit) addNewCampaign(survey, 'email')
+        if (survey.questions.length < 1) return threwError('No Questions added')
+        
+        if (!isEdit) addNewCampaign(survey, 'survey')
         else editCampaign(survey.id, survey)
 
         setIsDone(true)
@@ -64,7 +65,6 @@ const SurveyMenu = ({ survey, setSurvey, isEdit, selectedSurvey }) => {
         }
 
         let allQuestions = cloneDeep(questions)
-
         allQuestions.push(newQuestion)
         setQuestions(allQuestions)
     }
