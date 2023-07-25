@@ -43,7 +43,7 @@ export const MultipleOptionsQuestions = ({ question, setQuestionText, removeQues
                                             onChange={(e) => setOption(index, e.target.value)}
                                         />
                                     </div>
-                                    <div onClick={() => removeOption(index)} className="w-4 fill-color1 mr-2"><Close /></div>
+                                    <div onClick={() => removeOption(index)} className="w-4 fill-color1 mr-2 font-bold text-3xl leading-[0.7] text-color1">-</div>
                                 </div>
                             </li>
                         )

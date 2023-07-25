@@ -2,12 +2,20 @@ import { useNavigate } from "react-router";
 import Header from "../components/general/Header";
 import Card from '../components/create-campaign/Card';
 import templates from '../constants/campaign-templates'
+import useScrollPosition from "../hooks/useCreatePageScrollPosition";
+import { useEffect, useRef } from "react";
 
 const CreateCampaign = () => {
     const navigate = useNavigate()
+    const { position, setPosition } = useScrollPosition()
+    const scrollRef = useRef()
+
+    useEffect(() => {
+        if (scrollRef.current) scrollRef.current.scrollTop = position
+    }, [])
 
     return (
-        <>
+        <div className="absolute inset-0 overflow-auto" ref={scrollRef} onScroll={(e) => setPosition(e.target.scrollTop)}>
             <nav className="text-color2 m-3">
                 <Header action={() => navigate('/')} title={'Create Your New Campaign'} />
             </nav>
@@ -18,7 +26,7 @@ const CreateCampaign = () => {
                     )
                 })}
             </main>
-        </>
+        </div>
     )
 };
 export default CreateCampaign;
