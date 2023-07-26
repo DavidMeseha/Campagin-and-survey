@@ -144,12 +144,16 @@ input[type=number]::-webkit-outer-spin-button {
   .message-view {
     width: calc(100% - 60px);
   }
-  
+
   .touch-no-pointer {
     @apply cursor-default md:cursor-pointer;
+  }
+
+  .initial {
+    position: initial;
   }
 }
 
 ::-webkit-calendar-picker-indicator {
   filter: invert(1);
-}
+} 
