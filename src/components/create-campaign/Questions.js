@@ -8,7 +8,7 @@ export const TextQuestion = ({ question, setQuestionText, removeQuestion }) => {
                     <div className="grow">{question.type} Question</div>
                     <div onClick={removeQuestion} className="w-5 fill-color1"><Close /></div>
                 </div>
-                <input className='p-2 pt-7 rounded-md bg-primary text-white w-full h-16' type='text' value={question.question} onChange={(e) => setQuestionText(e.target.value)} placeholder='Type Question' />
+                <input className='p-2 pt-7 rounded-md bg-primary text-white w-full h-16 outline-offset-8' type='text' value={question.question} onChange={(e) => setQuestionText(e.target.value)} placeholder='Type Question' />
             </div>
         </div>
     )
@@ -21,10 +21,10 @@ export const MultipleOptionsQuestions = ({ question, setQuestionText, removeQues
                 <div className="grow">{question.type} Question</div>
                 <div onClick={removeQuestion} className="w-5 fill-color1"><Close /></div>
             </div>
-            <div className="mb-1">
+            <div className="mb-5">
                 <input
                     type="text" placeholder="Type Question"
-                    className="bg-primary pt-8 w-full p-2 rounded-md"
+                    className="bg-primary pt-8 w-full p-2 rounded-md outline-offset-8"
                     value={question.question}
                     onChange={(e) => setQuestionText(e.target.value)}
                 />
@@ -37,7 +37,7 @@ export const MultipleOptionsQuestions = ({ question, setQuestionText, removeQues
                                 <div className="flex gap-1 items-center" >
                                     <div className="grow">
                                         <input
-                                            type="text" className="bg-primary w-full"
+                                            type="text" className="pl-2 bg-primary w-full"
                                             placeholder="Enter Keyword"
                                             value={option}
                                             onChange={(e) => setOption(index, e.target.value)}

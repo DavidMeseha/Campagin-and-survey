@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ArrowSolid } from "../general/ArrowSolid";
 import QuestionSelect from "../../popups/QuestionSelect";
 import { MultipleOptionsQuestions, TextQuestion } from "./Questions";
+import { Close } from "../general/Icons";
 
 const MULTI_OPTIONS_Questions = ['Multiple Textbox', 'Multiple Choice', 'Checkbox', 'Ranking']
 const SINGLE_QUESTION = ['Single Textbox', 'Rating']
@@ -13,12 +13,12 @@ const QuestionSelectButton = ({ question, setQuestionType, setQuestionText, setO
         return (
             <>
                 {isOpen && <QuestionSelect close={() => setIsOpen(false)} setQuestionType={setQuestionType} />}
-                <div onClick={() => setIsOpen(true)} className="flex justify-between items-center bg-primary rounded-md cursor-default md:cursor-pointer p-2 mb-4">
-                    <div>
+                <div className="flex justify-between items-center bg-primary rounded-md cursor-default md:cursor-pointer p-2 mb-4">
+                    <div onClick={() => setIsOpen(true)} className="grow">
                         <div className=" text-color4 font-bold">Question</div>
                         <div className="text-color5 text-sm">Click To select Question</div>
                     </div>
-                    <ArrowSolid />
+                    <div onClick={removeQuestion} className="w-6 fill-color1 ml-4"><Close /></div>
                 </div>
             </>
         )

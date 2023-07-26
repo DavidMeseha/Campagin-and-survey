@@ -100,7 +100,6 @@ const SurveyMenu = ({ survey, setSurvey, isEdit, selectedSurvey }) => {
     }
 
     const removeQuestion = (index) => {
-        console.log(index)
         let allQuestions = cloneDeep(questions)
         allQuestions.splice(index, 1)
         setQuestions(allQuestions)
