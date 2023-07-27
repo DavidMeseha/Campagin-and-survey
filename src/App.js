@@ -6,7 +6,7 @@ import { DataProvider } from './context/DataProvider';
 function App() {
   return (
     <div className='theme-light'>
-      <div className='fixed inset-0 bg-primary overflow-auto'>
+      <div className='fixed inset-0 bg-primary overflow-hidden'>
         <CreatePagePositionProvider>
           <DataProvider>
             <AppRouting />
