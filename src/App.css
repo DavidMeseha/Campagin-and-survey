@@ -153,3 +153,7 @@ input[type=number]::-webkit-outer-spin-button {
 ::-webkit-calendar-picker-indicator {
   filter: invert(1);
 } 
+
+body{
+  overflow: hidden;
+}
