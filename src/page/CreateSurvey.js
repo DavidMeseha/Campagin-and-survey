@@ -49,7 +49,7 @@ const CreateSurvey = () => {
 
     return (
         <div className="relative">
-            <div className="relative h-[100vh] mx-4 text-color2 overflow-hidden">
+            <div className="relative h-[100vh] text-color2 overflow-hidden">
                 <div className="flex justify-between items-center p-3">
                     <Header title={'Survey Campaign'} action={() => navigate(`${isEdit ? '/' : '/create-campaign'}`)} />
                     <div className="w-16 sm:hidden">
