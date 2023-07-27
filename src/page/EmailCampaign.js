@@ -40,7 +40,7 @@ const EmailCampaign = () => {
 
     return (
         <div className="relative overflow-hidden">
-            <div className="relative h-[100vh] text-color2 overflow-hidden">
+            <div className="relative h-[100vh] text-color2 sm:mx-4 overflow-hidden">
                 <div className="flex justify-between items-center p-3">
                     <Header title={'Email Campaign'} action={() => navigate(`${isEdit ? '/' : '/create-campaign'}`)} />
                     <div className="w-16 sm:hidden">
@@ -51,7 +51,7 @@ const EmailCampaign = () => {
                         />
                     </div>
                 </div>
-                <main className={`absolute flex gap-8 mx-4 sm:w-full w-[194%] top-14 bottom-16 md:bottom-4 ${isView ? 'left-[-100%]' : 'left-0'} sm:left-0`}>
+                <main className={`absolute flex gap-8 mx-4 sm:mx-0 sm:w-full w-[194%] top-14 bottom-16 md:bottom-4 ${isView ? 'left-[-100%]' : 'left-0'} sm:left-0`}>
                     <div className="sm:w-[300px] w-1/2 p-3 bg-secondary rounded-md overflow-auto">
                         <EmailMenu campaign={campaign} selectedCampaign={selectedCampaign} setCampaign={setCampaign} isEdit={isEdit} />
                     </div>
