@@ -49,7 +49,6 @@ const SMSMenu = ({ campaign, setCampaign, isEdit, selectedCampaign }) => {
                 setSelectedServices([...selectedCampaign.promotion.services])
                 setPromotionDuration({ ...selectedCampaign.promotion.duration })
                 setPromotionValue({ value: selectedCampaign.promotion.value, type: selectedCampaign.promotion.type })
-
             }
         }
     }, [selectedCampaign])

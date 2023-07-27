@@ -41,7 +41,7 @@ const Filter = ({ filters, setFilters }) => {
     return (
         <div ref={containerRef} className="relative">
             <div onClick={() => setIsOpen(true)} className="w-8 p-2 bg-color5 fill-primary touch-no-pointer"><FilterIcon /></div>
-            {isOpen && <div className="w-52 bg-secondary top-10 right-0 absolute">
+            {isOpen && <div className="w-52 bg-secondary top-10 right-0 absolute z-20">
                 <div className="p-3 border-b-2 border-b-color5">
                     <div className="text-color4 font-semibold">Status</div>
                     <div className="flex gap-2 w-full">

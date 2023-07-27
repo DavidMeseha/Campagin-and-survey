@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ArrowSolid } from "../general/ArrowSolid";
 import CustomerSelect from "../../popups/CustomerSelect";
 

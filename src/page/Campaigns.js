@@ -94,14 +94,14 @@ const Campaigns = () => {
                         {selectedCampaigns.map(campaign => {
                             return (
                                 <tr key={campaign.id} className="bg-secondary">
-                                    <td className="p-4"><div onClick={() => navigate(`/edit-campaign/${campaign.type.toLowerCase()}/${campaign.id}`)} className="fill-color2 w-5 touch-no-pointer"><Edit /></div></td>
+                                    <td className="p-4 min-w-[60px]"><div onClick={() => navigate(`/edit-campaign/${campaign.type.toLowerCase()}/${campaign.id}`)} className="fill-color2 w-5 touch-no-pointer"><Edit /></div></td>
                                     <td>{new Date(campaign.created).toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
                                     <td>{campaign.type}</td>
                                     <td>{campaign.name}</td>
                                     <td>{campaign.targetCustomers.length} customers</td>
                                     <td>{new Date(campaign.activated).toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
                                     <td><Switch value={campaign.status} onChange={(e) => changeCampaignStatus(e.target.checked, campaign.id)} /></td>
-                                    <td className="flex justify-center"><div className="fill-color7 w-8 touch-no-pointer" onClick={() => openPerformance(campaign)}><Chart /></div></td>
+                                    <td className="flex justify-center items-center p-2"><div className="fill-color7 w-8 touch-no-pointer" onClick={() => openPerformance(campaign)}><Chart /></div></td>
                                 </tr>
                             )
                         })}

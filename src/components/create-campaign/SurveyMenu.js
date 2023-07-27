@@ -22,8 +22,8 @@ const SurveyMenu = ({ survey, setSurvey, isEdit, selectedSurvey }) => {
 
     useEffect(() => {
         if (!isEmpty(selectedSurvey)) {
-            setSurveyTitle(selectedSurvey.title)
-            setSelectedCustomers(selectedSurvey.selectedCustomers || [])
+            setSurveyTitle(selectedSurvey.name)
+            setSelectedCustomers(selectedSurvey.targetCustomers || [])
             setQuestions(selectedSurvey.questions)
         }
     }, [selectedSurvey])
