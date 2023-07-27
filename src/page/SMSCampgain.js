@@ -39,10 +39,10 @@ const SMSCampgain = () => {
     }, [campaigns])
 
     return (
-        <div className="relative">
+        <div className="relative overflow-hidden">
             <div className="relative h-[100vh] mx-4 text-color2 overflow-hidden">
                 <div className="flex justify-between items-center p-3">
-                    <Header title={'SMS Campaign'} action={() =>  navigate(`${isEdit ? '/' : '/create-campaign'}`)} />
+                    <Header title={'SMS Campaign'} action={() => navigate(`${isEdit ? '/' : '/create-campaign'}`)} />
                     <div className="w-16 sm:hidden"><Button name={isView ? 'Edit' : 'View'} action={() => setIsView(!isView)} color={'bg-color4'} /></div>
                 </div>
                 <main className={`absolute flex gap-3 sm:w-full w-[200%] top-14 bottom-16 md:bottom-4 ${isView ? 'left-[-100%]' : 'left-0'} sm:left-0`}>

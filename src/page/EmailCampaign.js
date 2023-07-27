@@ -32,14 +32,14 @@ const EmailCampaign = () => {
             setSelectedCampaign(foundCampaign)
         }
 
-        if (template && template != 'custom') {
+        if (template && template !== 'custom') {
             setCampaign(templates[template].email)
             setSelectedCampaign(templates[template].email)
         }
     }, [campaigns])
 
     return (
-        <div className="relative">
+        <div className="relative overflow-hidden">
             <div className="relative h-[100vh] mx-4 text-color2 overflow-hidden">
                 <div className="flex justify-between items-center p-3">
                     <Header title={'Email Campaign'} action={() => navigate(`${isEdit ? '/' : '/create-campaign'}`)} />
