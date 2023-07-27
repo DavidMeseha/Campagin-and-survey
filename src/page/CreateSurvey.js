@@ -48,7 +48,7 @@ const CreateSurvey = () => {
     }, [campaigns])
 
     return (
-        <div className="relative overflow-hidden">
+        <div className="relative">
             <div className="relative h-[100vh] mx-4 text-color2 overflow-hidden">
                 <div className="flex justify-between items-center p-3">
                     <Header title={'Survey Campaign'} action={() => navigate(`${isEdit ? '/' : '/create-campaign'}`)} />
@@ -60,7 +60,7 @@ const CreateSurvey = () => {
                         />
                     </div>
                 </div>
-                <main className={`absolute flex gap-3 sm:w-full w-[210%] top-14 bottom-16 md:bottom-4 ${isView ? 'left-[-100%]' : 'left-0'} sm:left-0`}>
+                <main className={`absolute flex gap-0 sm:gap-3 sm:w-full w-[200%] top-14 bottom-16 md:bottom-4 ${isView ? 'left-[-100%]' : 'left-0'} sm:left-0`}>
                     <div className="sm:w-[300px] w-1/2 p-3 bg-secondary rounded-md overflow-auto">
                         <SurveyMenu survey={survey} selectedSurvey={selectedSurvey} setSurvey={setSurvey} isEdit={isEdit} />
                     </div>

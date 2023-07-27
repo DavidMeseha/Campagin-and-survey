@@ -51,7 +51,7 @@ const EmailCampaign = () => {
                         />
                     </div>
                 </div>
-                <main className={`absolute flex gap-3 sm:w-full w-[210%] top-14 bottom-16 md:bottom-4 ${isView ? 'left-[-100%]' : 'left-0'} sm:left-0`}>
+                <main className={`absolute flex gap-0 sm:gap-3  sm:w-full w-[200%] top-14 bottom-16 md:bottom-4 ${isView ? 'left-[-100%]' : 'left-0'} sm:left-0`}>
                     <div className="sm:w-[300px] w-1/2 p-3 bg-secondary rounded-md overflow-auto">
                         <EmailMenu campaign={campaign} selectedCampaign={selectedCampaign} setCampaign={setCampaign} isEdit={isEdit} />
                     </div>
