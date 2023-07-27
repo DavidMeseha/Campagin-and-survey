@@ -63,7 +63,7 @@ const Campaigns = () => {
     }
 
     return (
-        <>
+        <div>
             {PerformanceIsOpen && <CampaignPerformance close={() => setPerformanceIsOpen(false)} campaign={campaignPerformance} />}
             <nav className="p-4 text-color2">
                 <div className="m-3"><Header title={'Avilable Campaigns'} action={() => { }} /></div>
@@ -108,7 +108,7 @@ const Campaigns = () => {
                     </tbody>
                 </table>
             </div>
-        </>
+        </div>
     )
 };
 export default Campaigns;
