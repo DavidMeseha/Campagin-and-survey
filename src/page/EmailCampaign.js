@@ -52,10 +52,10 @@ const EmailCampaign = () => {
                     </div>
                 </div>
                 <main className={`absolute flex gap-0 sm:gap-3  sm:w-full w-[200%] top-14 bottom-16 md:bottom-4 ${isView ? 'left-[-100%]' : 'left-0'} sm:left-0`}>
-                    <div className="sm:w-[300px] w-1/2 p-3 bg-secondary rounded-md overflow-auto">
+                    <div className="sm:w-[300px] w-1/2 mr-3 p-3 bg-secondary rounded-md overflow-auto">
                         <EmailMenu campaign={campaign} selectedCampaign={selectedCampaign} setCampaign={setCampaign} isEdit={isEdit} />
                     </div>
-                    <div className="flex flex-col sm:grow w-1/2 mr-4 p-3 bg-secondary rounded-md overflow-auto">
+                    <div className="flex flex-col sm:grow w-1/2 ml-3 p-3 bg-secondary rounded-md overflow-auto">
                         <div className="grow">
                             <div className="w-full p-3"><span className="text-green">Supject: </span>{campaign.supject}</div>
                             <div className="relative flex justify-center items-center h-28 w-[90%] m-auto my-3">
