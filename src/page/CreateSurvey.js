@@ -60,8 +60,8 @@ const CreateSurvey = () => {
                         />
                     </div>
                 </div>
-                <main className={`absolute flex gap-0 sm:gap-3 sm:w-full w-[200%] top-14 bottom-16 md:bottom-4 ${isView ? 'left-[-100%]' : 'left-0'} sm:left-0`}>
-                    <div className="sm:w-[300px] w-1/2 mr-3 p-3 bg-secondary rounded-md overflow-auto">
+                <main className={`absolute flex gap-8 mx-4 sm:w-full w-[194%] top-14 bottom-16 md:bottom-4 ${isView ? 'left-[-100%]' : 'left-0'} sm:left-0`}>
+                    <div className="sm:w-[300px] w-1/2 p-3 bg-secondary rounded-md overflow-auto">
                         <SurveyMenu survey={survey} selectedSurvey={selectedSurvey} setSurvey={setSurvey} isEdit={isEdit} />
                     </div>
                     <div className="sm:grow w-1/2 p-3 bg-secondary rounded-md overflow-auto">
