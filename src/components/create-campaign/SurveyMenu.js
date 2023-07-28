@@ -21,7 +21,7 @@ const SurveyMenu = ({ survey, setSurvey, isEdit, selectedSurvey }) => {
     const [isDone, setIsDone] = useState(false)
 
     useEffect(() => {
-        if (!isEmpty(selectedSurvey)) {
+        if (!isEmpty(selectedSurvey) && isEdit) {
             setSurveyTitle(selectedSurvey.name)
             setSelectedCustomers(selectedSurvey.targetCustomers || [])
             setQuestions(selectedSurvey.questions)
@@ -46,7 +46,7 @@ const SurveyMenu = ({ survey, setSurvey, isEdit, selectedSurvey }) => {
         if (!survey.name) return threwError('The Survey title input is empty')
         if (survey.targetCustomers.length < 1) return threwError('No Customers Selected')
         if (survey.questions.length < 1) return threwError('No Questions added')
-        
+
         if (!isEdit) addNewCampaign(survey, 'survey')
         else editCampaign(survey.id, survey)
 

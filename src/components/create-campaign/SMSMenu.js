@@ -92,6 +92,7 @@ const SMSMenu = ({ setCampaign, campaign, isEdit, selectedCampaign }) => {
             <Message message={errorMessage} state={isError} setState={setIsError} />
             <div>
                 <TextInput
+                    type={'text'}
                     title={'Campaign Name'}
                     placeholder={'Type Campaign Name'}
                     value={campaignName}

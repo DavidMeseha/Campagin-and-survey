@@ -49,11 +49,11 @@ const SMSCampgain = () => {
                     <div className={`md:w-[320px] w-full p-3 bg-secondary rounded-md overflow-auto md:block ${isView ? 'hidden' : 'block'}`}>
                         <SMSMenu campaign={campaign} selectedCampaign={selectedCampaign} setCampaign={setCampaign} isEdit={isEdit} />
                     </div>
-                    <div className={`flex flex-col md:calc-view-width w-full bg-secondary rounded-md md:block ${isView ? 'block' : 'hidden'}`}>
+                    <div className={`flex flex-col grow md:calc-view-width w-full bg-secondary rounded-md md:flex ${isView ? 'flex' : 'hidden'}`}>
                         <div className="w-full p-2 border-b-2 border-b-color2 text-center">TOAT</div>
                         <div className="flex items-end grow gap-2 p-3">
                             <div className="w-12 p-2 bg-green rounded-full"><User /></div>
-                            <div>
+                            <div className="calc-sms-message-width">
                                 <div className="w-full text-center text-color8 text-sm p-2">{new Date().toLocaleDateString('en', { weekday: 'long' }) + ', ' + new Date().toLocaleTimeString('en', { hour12: true, hour: '2-digit', minute: '2-digit' })}</div>
                                 <div className="p-4 w-full min-h-[50px] bg-primary rounded-[30px]">
                                     <div className="text-base">

@@ -55,7 +55,7 @@ const EmailCampaign = () => {
                     <div className={`md:w-[320px] w-full p-3 bg-secondary rounded-md overflow-auto md:block ${isView ? 'hidden' : 'block'}`}>
                         <EmailMenu campaign={campaign} selectedCampaign={selectedCampaign} setCampaign={setCampaign} isEdit={isEdit} />
                     </div>
-                    <div className={`flex flex-col md:calc-view-width w-full p-3 bg-secondary rounded-md overflow-auto md:block ${isView ? 'block' : 'hidden'}`}>
+                    <div className={`flex flex-col grow md:calc-view-width w-full p-3 bg-secondary rounded-md overflow-auto md:flex ${isView ? 'flex' : 'hidden'}`}>
                         <div className="grow">
                             <div className="w-full p-3"><span className="text-green">Supject: </span>{campaign.supject}</div>
                             <div className="relative flex justify-center items-center h-28 w-[90%] m-auto my-3">
