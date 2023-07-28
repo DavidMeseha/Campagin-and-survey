@@ -40,10 +40,10 @@ const EmailCampaign = () => {
 
     return (
         <div className="relative overflow-hidden">
-            <div className="relative h-[100vh] text-color2 sm:mx-4 overflow-hidden">
+            <div className="relative h-[100vh] text-color2 mx-4 overflow-hidden">
                 <div className="flex justify-between items-center p-3">
                     <Header title={'Email Campaign'} action={() => navigate(`${isEdit ? '/' : '/create-campaign'}`)} />
-                    <div className="w-16 sm:hidden">
+                    <div className="w-16 md:hidden">
                         <Button
                             name={isView ? 'Edit' : 'View'}
                             action={() => setIsView(!isView)}
@@ -51,11 +51,11 @@ const EmailCampaign = () => {
                         />
                     </div>
                 </div>
-                <main className={`absolute flex gap-8 mx-4 sm:mx-0 sm:w-full w-[192%] top-14 bottom-16 md:bottom-4 ${isView ? 'left-[-100%]' : 'left-0'} sm:left-0`}>
-                    <div className="sm:w-[300px] w-1/2 p-3 bg-secondary rounded-md overflow-auto">
+                <main className={`absolute flex w-full gap-3 top-14 bottom-16 md:bottom-4`}>
+                    <div className={`md:w-[320px] w-full p-3 bg-secondary rounded-md overflow-auto md:block ${isView ? 'hidden' : 'block'}`}>
                         <EmailMenu campaign={campaign} selectedCampaign={selectedCampaign} setCampaign={setCampaign} isEdit={isEdit} />
                     </div>
-                    <div className="flex flex-col sm:grow w-1/2 p-3 bg-secondary rounded-md overflow-auto">
+                    <div className={`flex flex-col md:calc-view-width w-full p-3 bg-secondary rounded-md overflow-auto md:block ${isView ? 'block' : 'hidden'}`}>
                         <div className="grow">
                             <div className="w-full p-3"><span className="text-green">Supject: </span>{campaign.supject}</div>
                             <div className="relative flex justify-center items-center h-28 w-[90%] m-auto my-3">

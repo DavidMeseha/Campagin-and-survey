@@ -49,10 +49,10 @@ const CreateSurvey = () => {
 
     return (
         <div className="relative">
-            <div className="relative h-[100vh] sm:mx-4 text-color2 overflow-hidden">
+            <div className="relative h-[100vh] mx-4 text-color2 overflow-hidden">
                 <div className="flex justify-between items-center p-3">
                     <Header title={'Survey Campaign'} action={() => navigate(`${isEdit ? '/' : '/create-campaign'}`)} />
-                    <div className="w-16 sm:hidden">
+                    <div className="w-16 md:hidden">
                         <Button
                             name={isView ? 'Edit' : 'View'}
                             action={() => setIsView(!isView)}
@@ -60,11 +60,11 @@ const CreateSurvey = () => {
                         />
                     </div>
                 </div>
-                <main className={`absolute flex gap-8 sm:gap-3 mx-4 sm:mx-0 sm:w-full w-[192%] top-14 bottom-16 md:bottom-4 ${isView ? 'left-[-100%]' : 'left-0'} sm:left-0`}>
-                    <div className="sm:w-[300px] w-1/2 p-3 bg-secondary rounded-md overflow-auto">
+                <main className={`absolute flex gap-3 w-full top-14 bottom-16 md:bottom-4`}>
+                    <div className={`md:w-[320px] w-full p-3 bg-secondary rounded-md overflow-auto md:block ${isView ? 'hidden' : 'block'}`}>
                         <SurveyMenu survey={survey} selectedSurvey={selectedSurvey} setSurvey={setSurvey} isEdit={isEdit} />
                     </div>
-                    <div className="sm:grow w-1/2 p-3 bg-secondary rounded-md overflow-auto">
+                    <div className={`md:calc-view-width w-full p-3 bg-secondary rounded-md overflow-auto md:block ${isView ? 'block' : 'hidden'}`}>
                         <div className="space-y-2">
                             {survey?.questions?.map((question, index) => {
                                 if (question.type === 'Single Textbox') {

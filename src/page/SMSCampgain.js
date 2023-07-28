@@ -40,20 +40,20 @@ const SMSCampgain = () => {
 
     return (
         <div className="relative">
-            <div className="relative h-[100vh] sm:mx-4 text-color2">
+            <div className="relative h-[100vh] mx-4 text-color2">
                 <div className="flex justify-between items-center p-3">
                     <Header title={'SMS Campaign'} action={() => navigate(`${isEdit ? '/' : '/create-campaign'}`)} />
-                    <div className="w-16 sm:hidden"><Button name={isView ? 'Edit' : 'View'} action={() => setIsView(!isView)} color={'bg-color4'} /></div>
+                    <div className="w-16 md:hidden"><Button name={isView ? 'Edit' : 'View'} action={() => setIsView(!isView)} color={'bg-color4'} /></div>
                 </div>
-                <main className={`absolute flex gap-8 mx-4 sm:mx-0 sm:w-full w-[192%] top-14 bottom-16 md:bottom-4 ${isView ? 'left-[-100%]' : 'left-0'} sm:left-0`}>
-                    <div className="sm:w-[300px] w-1/2 p-3 bg-secondary rounded-md overflow-auto">
+                <main className={`absolute flex w-full gap-3 top-14 bottom-16 md:bottom-4`}>
+                    <div className={`md:w-[320px] w-full p-3 bg-secondary rounded-md overflow-auto md:block ${isView ? 'hidden' : 'block'}`}>
                         <SMSMenu campaign={campaign} selectedCampaign={selectedCampaign} setCampaign={setCampaign} isEdit={isEdit} />
                     </div>
-                    <div className="flex flex-col sm:grow w-1/2 bg-secondary rounded-md">
+                    <div className={`flex flex-col md:calc-view-width w-full bg-secondary rounded-md md:block ${isView ? 'block' : 'hidden'}`}>
                         <div className="w-full p-2 border-b-2 border-b-color2 text-center">TOAT</div>
                         <div className="flex items-end grow gap-2 p-3">
                             <div className="w-12 p-2 bg-green rounded-full"><User /></div>
-                            <div className="message-view">
+                            <div>
                                 <div className="w-full text-center text-color8 text-sm p-2">{new Date().toLocaleDateString('en', { weekday: 'long' }) + ', ' + new Date().toLocaleTimeString('en', { hour12: true, hour: '2-digit', minute: '2-digit' })}</div>
                                 <div className="p-4 w-full min-h-[50px] bg-primary rounded-[30px]">
                                     <div className="text-base">

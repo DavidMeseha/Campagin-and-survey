@@ -141,8 +141,8 @@ input[type=number]::-webkit-outer-spin-button {
 @tailwind utilities;
 
 @layer components {
-  .message-view {
-    width: calc(100% - 60px);
+  .calc-view-width{
+    width: calc(100% - 320px);
   }
 
   .touch-no-pointer {
