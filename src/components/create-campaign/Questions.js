@@ -50,7 +50,7 @@ export const MultipleOptionsQuestions = ({ question, setQuestionText, removeQues
                     })}
                 </ol>
             </div>
-            <div onClick={addOption} className="text-color7 ml-2"><span className="text-xl mr-2">+</span>Add Option</div>
+            <div onClick={addOption} className="text-color7 ml-2 touch-no-pointer"><span className="text-xl mr-2">+</span>Add Option</div>
         </div>
     )
 }
